@@ -29,8 +29,8 @@
 ### 1. Клонируйте репозиторий
 
 ```bash
-git clone https://github.com/ваш-username/temp-mail-bot.git
-cd temp-mail-bot
+git clone https://github.com/sylvar1s/TempMail-TelegramBot.git
+cd TempMail-TelegramBot
 ```
 ### 1. Установите библиотеки
 ```bash
@@ -47,6 +47,9 @@ npm i node-telegram-bot-api axios mysql2
 ```bash
 node index.js
 ```
+---
+**Telegram - @resypool**
+
 
 
 
