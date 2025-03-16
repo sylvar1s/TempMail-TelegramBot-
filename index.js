@@ -3,17 +3,18 @@ const axios = require('axios');
 const mysql = require('mysql2');
 
 // Токен бота
-const token = ''; // токен
+const token = ''; // токен вставлять в ''
+const adminId = 0
 
 // Создаем экземпляр бота
 const bot = new TelegramBot(token, { polling: true });
 
 // Подключение к MySQL
 const pool = mysql.createPool({
-    host: 'localhost', // хост бд
-    user: 'root', // юзер бд
+    host: '', // хост бд
+    user: '', // юзер бд
     password: '', // пароль от бд
-    database: 'emailt', // сама бд
+    database: '', // сама бд
     waitForConnections: true,
     connectionLimit: 10,
     queueLimit: 0
@@ -123,7 +124,7 @@ bot.onText(/\/start/, async (msg) => {
 bot.onText(/\/vip (@\w+)/, async (msg, match) => {
     const chatId = msg.chat.id;
     const username = match[1].replace('@', ''); // Убираем @ из username
-
+    if(chatId !== adminId) return bot.sendMessage(chatId, `No!`)
     // Проверяем, есть ли пользователь в базе данных
     const [user] = await pool.query('SELECT * FROM users WHERE chat_id = ?', [chatId]);
 
